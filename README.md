@@ -1,9 +1,26 @@
+**Note: This branch is cloned from [baxter_recorder](https://github.com/baxter-flowers/recorder)** 
 # Baxter recorder
 This node records frames (including end effectors) in JSON, cameras (including kinect and depth or other external camera) in AVI/H264 and actions (custom package) in JSON of experiments using Baxter.
+
+## Pre-requirement
+
+- Install [Baxter SDK Dependencies](https://sdk.rethinkrobotics.com/wiki/Workstation_Setup)
+
+- Install KinectV1 driver, such as Openni or [libfreenect](https://github.com/OpenKinect/libfreenect)
+
+- OpenCV3 (not support OpenCV2, if you must use OpenCV2，please use [this branch](https://github.com/lyh458/kinect_video_recorder/tree/kinectv1-baxter-opencv2))
 
 ## Recording
 ### Usage
 Make sure all the transform frames frames you are interested in are specified within the [config file](config/frames.yaml). Then the basic usage is as follow:
+
+- Start camera driver with the launch file in this package(used openni here)
+```
+roslaunch kinect_video_recorder start_kinect.launch
+```
+or other commands you like.
+
+- Start the video record launch
 ```
 roslaunch recorder record.launch
 ```
