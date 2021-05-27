@@ -9,7 +9,6 @@ from sys import argv
 from os import system
 from rosgraph_msgs.msg import Clock
 from sensor_msgs.msg import Image
-# from stereo_msgs.msg import DisparityImage
 from threading import RLock
 from copy import deepcopy
 from cv_bridge.core import CvBridge
