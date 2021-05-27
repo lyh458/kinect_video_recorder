@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="kinect_name" default="camera"/>
-    <include file="$(find openni_launch)/launch/openni_registered.launch">
+    <include file="$(find openni_launch)/launch/openni.launch">
         <param name="camera" value="$(arg kinect_name)" />
     </include>
 
