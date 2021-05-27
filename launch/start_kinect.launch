@@ -1,16 +1,17 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="kinect_name" default="camera"/>
     <include file="$(find openni_launch)/launch/openni_registered.launch">
-        <arg name="camera" value="openni" />
+        <param name="camera" value="$(arg kinect_name)" />
     </include>
 
     <node name="image_view_kinect" pkg="image_view" type="image_view" respawn="false" output="screen">
-        <remap from="image" to="/openni/rgb/image_color"/>
+        <remap from="image" to="/$(arg kinect_name)/rgb/image_color"/>
         <param name="autosize" value="false" />
     </node>
 
     <node name="disparity_view" pkg="image_view" type="disparity_view" respawn="false" output="screen">
-        <remap from="image" to="/openni/depth_registered/disparity"/>
+        <remap from="image" to="/$(arg kinect_name)/depth_registered/disparity"/>
         <param name="autosize" value="false" />
     </node>
 </launch>
