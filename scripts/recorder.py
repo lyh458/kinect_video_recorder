@@ -9,6 +9,7 @@ from sys import argv
 from os import system
 from rosgraph_msgs.msg import Clock
 from sensor_msgs.msg import Image
+from stereo_msgs.msg import DisparityImage
 from threading import RLock
 from copy import deepcopy
 from cv_bridge.core import CvBridge
@@ -61,10 +62,8 @@ class Recorder:
         self.right_image_sub = rospy.Subscriber('/cameras/right_hand_camera/image', Image, self.cb_image_right, queue_size=1)
         self.left_image_sub = rospy.Subscriber('/cameras/left_hand_camera/image', Image, self.cb_image_left, queue_size=1)
         self.head_image_sub = rospy.Subscriber('/usb_cam/image_raw', Image, self.cb_image_head, queue_size=1)
-        # self.kinect_rgb_sub = rospy.Subscriber('/camera/rgb/image_color', Image, self.cb_kinect_rgb, queue_size=1)
-        # self.kinect_depth_sub = rospy.Subscriber('/camera/depth_registered/disparity', DisparityImage, self.cb_kinect_depth, queue_size=1)
-        self.kinect_rgb_sub = rospy.Subscriber('/kinect2/qhd/image_color', Image, self.cb_kinect_rgb, queue_size=1)
-        self.kinect_depth_sub = rospy.Subscriber('/kinect2/qhd/image_depth_rect', Image, self.cb_kinect_depth, queue_size=1)
+        self.kinect_rgb_sub = rospy.Subscriber('/camera/rgb/image_color', Image, self.cb_kinect_rgb, queue_size=1)
+        self.kinect_depth_sub = rospy.Subscriber('/camera/depth_registered/disparity', DisparityImage, self.cb_kinect_depth, queue_size=1)
         # self.actions_sub = rospy.Subscriber('/thr/action_history', ActionHistoryEvent, self.cb_action_history, queue_size=100)
 
     def start_cameras(self, camera1='left_hand_camera', camera2='right_hand_camera', resolution=(1280, 800)):
@@ -103,9 +102,9 @@ class Recorder:
         self.open_writer('kinect')
         self._update_readiness('kinect')
 
-    def cb_kinect_depth(self, image):
+    def cb_kinect_depth(self, disparity):
         with self.locks['depth']:
-            self.image['depth'] = image
+            self.image['depth'] = disparity.image
         self.open_writer('depth')
         self._update_readiness('depth')
 
