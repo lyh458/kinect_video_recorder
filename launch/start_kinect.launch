@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="kinect_name" default="camera"/>
+    <arg name="kinect_name" default="kinectv1"/>
     <include file="$(find openni_launch)/launch/openni.launch">
-        <param name="camera" value="$(arg kinect_name)" />
+        <arg name="camera" value="$(arg kinect_name)" />
     </include>
 
     <node name="image_view_kinect" pkg="image_view" type="image_view" respawn="false" output="screen">

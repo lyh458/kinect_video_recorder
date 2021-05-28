@@ -9,6 +9,7 @@
     <arg name="frames" default="False" />
     <arg name="actions" default="False" />
     
+    
     <rosparam if="$(arg frames)" command="load" file="$(find kinect_video_recorder)/config/frames.yaml" param="recorder/frames"/>
     
     <rosparam param="/recorder/enabled/kinect" subst_value="True">$(arg kinect)</rosparam>
