@@ -8,7 +8,7 @@
     <arg name="head" default="False" />
     <arg name="frames" default="False" />
     <arg name="actions" default="False" />
-    
+    <arg name="kinect_name" default="kinectv1" />    
     
     <rosparam if="$(arg frames)" command="load" file="$(find kinect_video_recorder)/config/frames.yaml" param="recorder/frames"/>
     
@@ -22,5 +22,6 @@
     
     <node name="recorder" pkg="kinect_video_recorder" type="recorder.py" output="screen">
         <param name="path" value="$(arg path)"/>
+        <param name="kinect_name" value="$(arg kinect_name)"/>   
     </node>
 </launch>
