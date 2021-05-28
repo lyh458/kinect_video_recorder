@@ -63,8 +63,10 @@ class Recorder:
         self.head_image_sub = rospy.Subscriber('/usb_cam/image_raw', Image, self.cb_image_head, queue_size=1)
         self.kinect_name = rospy.get_param('kinect_name', 'kinectv2')
         self.quality = rospy.get_param('quality', 'qhd')
-        self.kinect_rgb_sub = rospy.Subscriber(self.kinect_name + self.quality + '/image_color', Image, self.cb_kinect_rgb, queue_size=1)
-        self.kinect_depth_sub = rospy.Subscriber(self.kinect_name + self.quality + '/image_depth_rect', Image, self.cb_kinect_depth, queue_size=1)
+        self.kinect_rgb_topic = [self.kinect_name, self.quality, 'image_color']
+        self.kinect_depth_topic = [self.kinect_name, self.quality, 'image_depth_rect']
+        self.kinect_rgb_sub = rospy.Subscriber('/'.join(self.kinect_rgb_topic), Image, self.cb_kinect_rgb, queue_size=1)
+        self.kinect_depth_sub = rospy.Subscriber('/'.join(self.kinect_depth_topic), Image, self.cb_kinect_depth, queue_size=1)
         # self.actions_sub = rospy.Subscriber('/thr/action_history', ActionHistoryEvent, self.cb_action_history, queue_size=100)
 
     def start_cameras(self, camera1='left_hand_camera', camera2='right_hand_camera', resolution=(1280, 800)):
