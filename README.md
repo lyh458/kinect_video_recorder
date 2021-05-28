@@ -45,7 +45,7 @@ It may also record other sources, assuming that their dependencies are installed
 
 Features can be enabled in command line:
 ```
-roslaunch recorder record.launch kinect:=true depth:=true head:=true
+roslaunch kinect_video_recorder record.launch kinect:=true depth:=true head:=true
 ```
 
 ### Warning about thr_infrastructure_msgs
