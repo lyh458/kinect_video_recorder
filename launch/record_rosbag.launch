@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="path" default="$(find recorder)/data/$(anon bag)" />
-
-    <include file="$(find recorder)/launch/start_kinect.launch"/>
+    <arg name="kinect_name" default="kinectv2"/>
+    <arg name="quality" default="qhd" />
+    <arg name="path" default="$(find kinect_video_recorder)/data/$(anon bag)" />
+    <include file="$(find kinect_video_recorder)/launch/start_kinect.launch"/>
     <include file="$(find usb_cam)/launch/usb_cam.launch"/>
-
-    <node name="rosbag" pkg="rosbag" type="record" args="/usb_cam/image_raw /openni/rgb/image_color /openni/depth_registered/disparity /tf -O /tmp/bag.bag" />
+    <node name="rosbag" pkg="rosbag" type="record" args="/usb_cam/image_raw /$(arg kinect_name)/$(arg quality)/image_color /$(arg kinect_name)/$(arg quality)/image_depth_rect /tf -O /tmp/bag.bag" />
 </launch>

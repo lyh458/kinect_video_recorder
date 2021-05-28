@@ -1,16 +1,24 @@
 <?xml version="1.0"?>
 <launch>
-    <include file="$(find openni_launch)/launch/openni_registered.launch">
-        <arg name="camera" value="openni" />
+    <arg name="kinect_name" default="kinectv2"/>
+    <arg name="quality" default="qhd"/>
+    <arg name="publish_tf" default="true"/>
+	<arg name="depth_method" default="opengl"/>
+	<arg name="reg_method" default="cpu"/>
+    <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+        <arg name="base_name" value="$(arg kinect_name)" />
+        <arg name="publish_tf" value="$(arg publish_tf)" />
+		<arg name="depth_method" value="$(arg depth_method)" />
+		<arg name="reg_method" value="$(arg reg_method)" />
     </include>
 
-    <node name="image_view_kinect" pkg="image_view" type="image_view" respawn="false" output="screen">
-        <remap from="image" to="/openni/rgb/image_color"/>
+    <node name="image_view_color" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <remap from="image" to="/$(arg kinect_name)/$(arg quality)/image_color"/>
         <param name="autosize" value="false" />
     </node>
 
-    <node name="disparity_view" pkg="image_view" type="disparity_view" respawn="false" output="screen">
-        <remap from="image" to="/openni/depth_registered/disparity"/>
+    <node name="image_view_depth" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <remap from="image" to="/$(arg kinect_name)/$(arg quality)/image_depth_rect"/>
         <param name="autosize" value="false" />
     </node>
 </launch>
