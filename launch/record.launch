@@ -5,6 +5,7 @@
     <arg name="depth" default="False" />
     <arg name="left" default="True" />
     <arg name="right" default="True" />
+    <arg name="head" default="False" />
     <arg name="frames" default="True" />
     <arg name="actions" default="False" />
     
