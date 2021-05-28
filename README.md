@@ -22,7 +22,7 @@ or other commands you like.
 
 - Start the video record launch
 ```
-roslaunch recorder record.launch
+roslaunch kinect_video_recorder record.launch
 ```
 The recorder works in interactive mode, takes several seconds to setup and then asks the user to press Enter to start recording:
 ```
