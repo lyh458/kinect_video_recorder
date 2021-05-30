@@ -8,7 +8,7 @@ This node records frames (including end effectors) in JSON, cameras (including k
 
 - Install KinectV2 driver [libfreenect2](https://github.com/OpenKinect/libfreenect2) and [iai_kinect2]() the bridge between libfreenect2 and [ROS](https://github.com/code-iai/iai_kinect2)
 
-- OpenCV3 (not support OpenCV2, if you must use OpenCV2，please use [this branch](https://github.com/lyh458/kinect_video_recorder/tree/kinectv1-baxter-opencv2))
+- OpenCV3 (not support OpenCV2, if you must use OpenCV2，please use [this branch](https://github.com/lyh458/kinect_video_recorder/tree/kinectv1-baxter-opencv2)).
 
 ## Recording
 ### Usage
