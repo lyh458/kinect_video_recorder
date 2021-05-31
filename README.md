@@ -1,5 +1,7 @@
-**Note: This branch is cloned from [baxter_recorder](https://github.com/baxter-flowers/recorder)** 
-# Baxter recorder
+**Note: This branch is mainly cloned from [baxter_recorder](https://github.com/baxter-flowers/recorder)**, but disrelated codes are cleaned and more focus on kinect video recording.
+
+# kinect_video_recorder
+
 This node records frames (including end effectors) in JSON, cameras (including kinect and depth or other external camera) in AVI/H264 and actions (custom package) in JSON of experiments using Baxter.
 
 ## Pre-requirement
@@ -11,7 +13,9 @@ This node records frames (including end effectors) in JSON, cameras (including k
 - OpenCV3 (not support OpenCV2, if you must use OpenCV2，please use [this branch](https://github.com/lyh458/kinect_video_recorder/tree/kinectv1-baxter-opencv2)).
 
 ## Recording
+
 ### Usage
+
 Make sure all the transform frames frames you are interested in are specified within the [config file](config/frames.yaml). Then the basic usage is as follow:
 
 - Start camera driver, (the default name of kinect is initialized to **kinectv2**)
