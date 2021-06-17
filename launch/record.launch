@@ -10,6 +10,7 @@
     <arg name="actions" default="False" />
     <arg name="kinect_name" default="kinectv2" />
     <arg name="quality" default="qhd" />
+    <arg name="extension" default=".mp4" />
     
     <rosparam if="$(arg frames)" command="load" file="$(find kinect_video_recorder)/config/frames.yaml" param="recorder/frames"/>
     
@@ -22,8 +23,9 @@
     <rosparam param="/recorder/enabled/actions" subst_value="True">$(arg actions)</rosparam>
     
     <node name="recorder" pkg="kinect_video_recorder" type="recorder.py" output="screen">
-        <param name="path" value="$(arg path)"/>
+        <param name="path" value="$(arg path)" />
         <param name="kinect_name" value="$(arg kinect_name)" />
-        <param name="quality" value="$(arg quality)" />        
+        <param name="quality" value="$(arg quality)" />
+        <param name="extension" value="$(arg extension)" />
     </node>
 </launch>

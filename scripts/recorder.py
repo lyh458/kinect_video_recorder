@@ -48,7 +48,7 @@ class Recorder:
         self.locks = {'kinect': RLock(), 'depth': RLock()}
         # self.four_cc = cv.CV_FOURCC('F' ,'M','P', '4')
         self.four_cc = cv2.VideoWriter_fourcc('F' ,'M','P', '4')
-        self.extension = '.avi'
+        self.extension = rospy.get_param('/recorder/extension/', '.avi')
         self.writers = {'kinect': None, 'depth': None}
         self.formats = {'kinect': 'bgr8', 'depth': '8UC1'} #'depth': 32FC1?}
 
