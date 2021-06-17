@@ -2,7 +2,7 @@
 <launch>
     <arg name="path" default="$(find kinect_video_recorder)/data/$(anon dataset)" />
     <arg name="kinect" default="True" />
-    <arg name="depth" default="True" />
+    <arg name="depth" default="False" />
     <arg name="left" default="False" />
     <arg name="right" default="False" />
     <arg name="head" default="False" />
