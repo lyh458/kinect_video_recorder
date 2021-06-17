@@ -61,7 +61,7 @@ class Recorder:
         self.right_image_sub = rospy.Subscriber('/cameras/right_hand_camera/image', Image, self.cb_image_right, queue_size=1)
         self.left_image_sub = rospy.Subscriber('/cameras/left_hand_camera/image', Image, self.cb_image_left, queue_size=1)
         self.head_image_sub = rospy.Subscriber('/usb_cam/image_raw', Image, self.cb_image_head, queue_size=1)
-        self.kinect_name = rospy.get_param('kinect_name', 'kinectv2')
+        self.kinect_name = rospy.get_param('/recorder/kinect_name', 'kinectv2')
         self.quality = rospy.get_param('quality', 'qhd')
         self.kinect_rgb_topic = [self.kinect_name, self.quality, 'image_color']
         self.kinect_depth_topic = [self.kinect_name, self.quality, 'image_depth_rect']
